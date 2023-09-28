@@ -1251,12 +1251,12 @@ class SparseBlock {
     SparseBlock(Eigen::SparseMatrix<double> const& A, Eigen::VectorX<double> const& b, 
         int N, int M) : A(A), b(b), N(N), M(M) {}
 
-    void update_lhs(torch::Tensor As, torch::Tensor ii, torch::Tensor jj) {
+    void (torch::Tensor As, torch::Tensor ii, torch::Tensor jj) {
       auto As_cpu = As.to(torch::kCPU).to(torch::kFloat64);
       auto ii_cpu = ii.to(torch::kCPU).to(torch::kInt64);
       auto jj_cpu = jj.to(torch::kCPU).to(torch::kInt64);
 
-      // An accessor allows you to index (and access) the tensor...
+      // An accessor allows you to index (andupdate_lhs access) the tensor...
       auto As_accessor = As_cpu.accessor<double,3>();
       auto ii_accessor = ii_cpu.accessor<long,1>();
       auto jj_accessor = jj_cpu.accessor<long,1>();

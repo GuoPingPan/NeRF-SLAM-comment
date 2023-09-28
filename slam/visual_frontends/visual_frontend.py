@@ -102,7 +102,7 @@ class RaftVisualFrontend(VisualFrontend):
         self.body_T_cam0 = body_T_cam0
         self.world_T_cam0_t0 = world_T_body_t0 * body_T_cam0
         self.cam0_t0_T_world = gtsam_pose_to_torch(
-            self.world_T_cam0_t0.inverse(), self.device, torch.float)
+        self.world_T_cam0_t0.inverse(), self.device, torch.float)
         self.cam0_T_body = gtsam_pose_to_torch(
             body_T_cam0.inverse(), self.device, torch.float)
 
@@ -1068,8 +1068,8 @@ class RaftVisualFrontend(VisualFrontend):
         return state_dict
 
     # TODO: I changed from kf0=1 to kf0=0
-    def ba(self, gru_estimated_flow, gru_estimated_flow_weight, damping, ii, jj, 
-           kf0=0, kf1=None, itrs=2, lm=1e-4, ep=0.1, 
+    def ba(self, gru_estimated_flow, gru_estimated_flow_weight, damping, ii, jj,
+           kf0=0, kf1=None, itrs=2, lm=1e-4, ep=0.1,
            motion_only=False, compute_covariances=True):
         """ dense bundle adjustment (DBA): gets reduced camera matrix, solves it using gtsam, calculates covariances """
 
